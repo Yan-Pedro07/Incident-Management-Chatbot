@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tickets Fechados</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <div class="tabs">
+    <a href="/" class="tab">Chat</a>
+    <a href="/open_tickets" class="tab">Open Tickets</a>
+    <a href="/closed_tickets" class="tab active">Closed Tickets</a>
+  </div>
+
+  <h2>Closed Tickets</h2>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>System</th>
+      <th>Urgency</th>
+      <th>Description</th>
+      <th>Solution</th>
+      <th>Final Consideration</th>
+      <th>Closing Date</th>
+    </tr>
+    {% for ticket in tickets %}
+    <tr>
+      <td>{{ ticket.id }}</td>
+      <td>{{ ticket.user_name }}</td>
+      <td>{{ ticket.system }}</td>
+      <td>{{ ticket.urgency }}</td>
+      <td>{{ ticket.description }}</td>
+      <td>{{ ticket.solution }}</td>
+      <td>{{ ticket.user_considerations }}</td>
+      <td>{{ ticket.closed_at }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Gerenciamento de Incidentes</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <div class="tabs">
+    <a href="/" class="tab active">Chat</a>
+    <a href="/open_tickets" class="tab">Opened Tickets</a>
+    <a href="/closed_tickets" class="tab">Closed Tickets</a>
+  </div>
+
+  <div class="chat-container">
+    <div id="chat-box"></div>
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="Describe your problem...">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

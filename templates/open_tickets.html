@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Open Tickets</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+  <div class="tabs">
+    <a href="/" class="tab">Chat</a>
+    <a href="/open_tickets" class="tab active">Open Tickets</a>
+    <a href="/closed_tickets" class="tab">Closed Tickets</a>
+  </div>
+
+  <h2>Opened Tickets</h2>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>System</th>
+      <th>Urgency</th>
+      <th>Description</th>
+      <th>Opening Date</th>
+      <th>Solution</th>
+      <th>Solution Status</th>
+      <th>Final considerations</th>
+    </tr>
+    {% for ticket in tickets %}
+    <tr>
+      <td>{{ ticket.id }}</td>
+      <td>{{ ticket.user_name }}</td>
+      <td>{{ ticket.system }}</td>
+      <td>{{ ticket.urgency }}</td>
+      <td>{{ ticket.description }}</td>
+      <td>{{ ticket.created_at }}</td>
+      <td>{{ ticket.solution }}</td>
+      <td>{{ ticket.status }}</td>
+      <td>
+        <form action="/close_ticket/{{ ticket.id }}" method="post">
+          <textarea name="solution" placeholder="Final considerations..." required></textarea>
+          <button type="submit">Close Ticket</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+</body>
+</html>
